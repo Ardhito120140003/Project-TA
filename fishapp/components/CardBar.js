@@ -10,7 +10,7 @@ const CardBar = ({ value, maxValue, label, title }) => {
             <View style={styles.progressBar}>
                 <View style={[styles.progressFill, { width: `${percentage}%` }]} />
             </View>
-            <Text style={styles.labelText}>{label} : <Text style={styles.valueText}>{value}%</Text></Text>
+            <Text style={styles.labelText}>{label} : <Text style={styles.valueText}>{value} Hz</Text></Text>
         </View>
     );
 };

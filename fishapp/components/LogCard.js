@@ -35,9 +35,9 @@ const LogCard = ({ logs, title }) => {
                         const valueParts = [];
                         if (log.do !== undefined) valueParts.push(`${log.do} mg/L`);
                         if (log.suhu !== undefined) valueParts.push(`${log.suhu} °C`);
-                        if (log.rpm !== undefined) valueParts.push(`${log.rpm} RPM`);
+                        // if (log.rpm !== undefined) valueParts.push(`${log.rpm} Hz`);
                         
-                        if (log.weight !== undefined) valueParts.push(`${log.weight} gram`);
+                        if (log.berat !== undefined) valueParts.push(`${log.berat} gram`);
 
                         const value = valueParts.length > 0 ? valueParts.join(" | ") : "Tidak Ada Data";
 
@@ -45,7 +45,8 @@ const LogCard = ({ logs, title }) => {
                             ? "Berhasil"
                             : log.status === "failed"
                             ? "Gagal"
-                            : "Status Tidak Diketahui";
+                            : `Frekuensi Aerator : ${log.frekuensi} Hz`
+                            // : "Status Tidak Diketahui"
 
                         return (
                             <View key={index} style={styles.logItem}>
@@ -117,7 +118,8 @@ const styles = StyleSheet.create({
         color: "#d32f2f", // Merah
     },
     unknown: {
-        color: "#888",
+        // color: "#888",
+        color: "#2e7d32", // Hijau
     },
     emptyText: {
         fontSize: 14,
