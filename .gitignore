@@ -13,7 +13,6 @@ yarn-error.log*
 # React Native (fishapp/)
 # ================================
 fishapp/node_modules/
-# fishapp/android/
 fishapp/ios/
 fishapp/.expo/
 fishapp/.expo-shared/
@@ -47,5 +46,7 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+# Ignore semua isi android kecuali google-services.json
 fishapp/android/*
+!fishapp/android/app/
 !fishapp/android/app/google-services.json
