@@ -21,14 +21,24 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "googleServicesFile": "./android/app/google-services.json",
-      "package": "com.ardhito.fishapp"
+      "package": "com.ardhito.fishapp",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-notifications"
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
+      "expo-notifications",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "googleServicesFile": "GOOGLE_SERVICES_JSON"
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
