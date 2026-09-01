@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Modal, View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  Modal,
+  View,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { db, ref, push, set } from "../firebase";
+import { Ionicons } from "@expo/vector-icons";
 
 const AddJadwal = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,8 +32,12 @@ const AddJadwal = () => {
   return (
     <>
       {/* Tombol Mengambang */}
-      <TouchableOpacity style={styles.floatingButton} onPress={() => setModalVisible(true)}>
-        <Text style={styles.buttonText}>+</Text>
+      <TouchableOpacity
+        style={styles.floatingButton}
+        onPress={() => setModalVisible(true)}
+      >
+        <Ionicons name="add" size={30} style={{ color: "#fff" }} />
+        {/* <Text style={styles.buttonText}>+</Text> */}
       </TouchableOpacity>
 
       {/* Modal Form Tambah Jadwal */}
@@ -32,28 +45,38 @@ const AddJadwal = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Tambah Jadwal Pakan</Text>
-            
-            <Text>Jam (HH:MM)</Text>
+
+            <Text style={{marginBottom:5}}>Jam (HH:MM)</Text>
             <TextInput
               style={styles.input}
-              placeholder="Contoh: 11:00"
+              placeholder="Contoh : 11:00"
+              placeholderTextColor="#555"
               value={jam}
               onChangeText={setJam}
               keyboardType="default"
             />
-            
-            <Text>Berat Pakan (gram)</Text>
+
+            <Text style={{marginBottom:5}}>Berat Pakan (gram)</Text>
             <TextInput
               style={styles.input}
-              placeholder="Contoh: 100"
+              placeholder="Contoh : 100"
+              placeholderTextColor="#555"
               value={berat}
               onChangeText={setBerat}
               keyboardType="numeric"
             />
-            
+
             <View style={styles.buttonRow}>
-              <Button title="Batal" onPress={() => setModalVisible(false)} color="red" />
-              <Button title="Simpan" onPress={tambahJadwalPakan} />
+              <Button
+                title="Batal"
+                onPress={() => setModalVisible(false)}
+                color="red"
+              />
+              <Button 
+                title="Simpan"
+                onPress={tambahJadwalPakan}
+                color={"#0077ff"}
+              />
             </View>
           </View>
         </View>
@@ -67,18 +90,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
-    backgroundColor: "#3498db",
+    backgroundColor: "#007aff",
     width: 60,
     height: 60,
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
     elevation: 5,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "bold",
   },
   modalContainer: {
     flex: 1,
@@ -95,7 +113,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 15,
     textAlign: "center",
   },
   input: {

@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, FlatList, StyleSheet, ScrollView} from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import { db, ref, onValue, remove } from "../firebase";
 
 const ListJadwal = () => {
@@ -11,7 +18,11 @@ const ListJadwal = () => {
 
     onValue(schedulesRef, (snapshot) => {
       const data = snapshot.val();
-      setJadwal(data ? Object.entries(data).map(([id, value]) => ({ id, ...value })) : []);
+      setJadwal(
+        data
+          ? Object.entries(data).map(([id, value]) => ({ id, ...value }))
+          : [],
+      );
     });
   }, []);
 
@@ -23,15 +34,19 @@ const ListJadwal = () => {
   };
 
   return (
-      <View style={styles.card}>
+    <View style={styles.card}>
       <Text style={styles.title}>Jadwal Pakan</Text>
-        <FlatList
+      <FlatList
         data={jadwal}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.listItem}>
             <Text>{`${item.jam} - ${item.berat} gram`}</Text>
-            <Button title="Hapus" onPress={() => hapusJadwalPakan(item.id)} color="red" />
+            <Button
+              title="Hapus"
+              onPress={() => hapusJadwalPakan(item.id)}
+              color="red"
+            />
           </View>
         )}
       />
@@ -53,7 +68,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     marginVertical: 5,
     minHeight: 130,
-
   },
   title: {
     fontSize: 18,
