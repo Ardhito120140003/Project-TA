@@ -24,17 +24,6 @@ fishapp/*.keystore
 fishapp/*.jks
 
 # ================================
-# Backend (backend/)
-# ================================
-backend/node_modules/
-backend/.env
-backend/.DS_Store
-backend/logs/
-backend/build/
-backend/dist/
-backend/coverage/
-
-# ================================
 # VSCode
 # ================================
 .vscode/
